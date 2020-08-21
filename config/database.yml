@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+#Feel Free to change the username and password to match your local postgres env
+development:
+  <<: *default
+  database: recipe_development
+  username: test4
+  password: test4
+  port: 5432
+  host: localhost
+
+#Feel Free to change the username and password to match your local postgres env
+test:
+  <<: *default
+  database: recipe_test
+  username: test4
+  password: test4
+  port: 5432
+  host: localhost
+
+
+production:
+  url: <%= ENV['DATABASE_URL'] %>
